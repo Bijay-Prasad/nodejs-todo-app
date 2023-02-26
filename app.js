@@ -21,13 +21,23 @@ app.get('/', function(req, res){
 app.post('/', function(req, res){
     const title = req.body.list;
     const item = req.body.newItem;
-    if(title === "Work"){
-        workItem.push(item);
-        res.redirect('/work');
+    if(item){
+        if(title === "Work"){
+            workItem.push(item);
+            res.redirect('/work');
+        }
+        else{
+            items.push(item);
+            res.redirect('/');
+        }
     }
     else{
-        items.push(item);
-        res.redirect('/');
+        if(title === "Work"){
+            res.redirect('/work');
+        }
+        else{
+            res.redirect('/');
+        }
     }
 });
 
